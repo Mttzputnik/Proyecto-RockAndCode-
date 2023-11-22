@@ -65,8 +65,12 @@ public class Concierto {
         this.ubicacion = ubicacion;
     }
 
-    public void registrarBoletosVendidos(int boletos) {
-        this.boletosVendidos += boletos;
+    public void registrarBoletosVendidos(int boletos) throws BoletosInsuficientesException {
+        if (boletosVendidos + boletos > capacidadLugar) {
+            throw new BoletosInsuficientesException("No hay suficientes boletos disponibles para la venta.");
+        } else {
+            this.boletosVendidos += boletos;
+        }
     }
 
    

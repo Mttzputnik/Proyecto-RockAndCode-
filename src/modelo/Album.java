@@ -1,6 +1,5 @@
 package modelo;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,9 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-
-
-public class Album implements Informacion{
+public class Album implements Informacion {
     private String titulo;
     private Date fechaLanzamiento;
     private List<Cancion> canciones;
@@ -26,7 +23,7 @@ public class Album implements Informacion{
         this.sencillosDestacados = new ArrayList<>();
     }
 
-    //Getters y Setters
+    // Getters y Setters
 
     public String getTitulo() {
         return titulo;
@@ -60,7 +57,6 @@ public class Album implements Informacion{
         this.sencillosDestacados = sencillosDestacados;
     }
 
-
     // Métodos para la gestión de canciones y críticas
     public void agregarCancion(Cancion cancion) {
         this.canciones.add(cancion);
@@ -76,9 +72,9 @@ public class Album implements Informacion{
         this.titulo = titulo;
         this.fechaLanzamiento = fechaLanzamiento;
     }
-  
+
     @Override
-    public void registrarInformacion() {
+    public void registrarInformacion() throws InformacionException {
         try (FileWriter writer = new FileWriter("src/archivos/album.txt")) {
             writer.write("Título del Álbum: " + titulo + "\n");
             writer.write("Fecha de Lanzamiento: " + fechaLanzamiento + "\n");
@@ -88,13 +84,13 @@ public class Album implements Informacion{
 
             System.out.println("Información del álbum registrada en 'album.txt'.");
         } catch (IOException e) {
-            System.err.println("Error al registrar información: " + e.getMessage());
+            throw new InformacionException("Error al registrar información: " + e.getMessage());
         }
     }
 
     @Override
-    public void actualizarInformacion() {
-        try (FileWriter writer = new FileWriter("src/archivos/album.txt" )) {
+    public void actualizarInformacion() throws InformacionException {
+        try (FileWriter writer = new FileWriter("src/archivos/album.txt")) {
             writer.write("Título del Álbum: " + titulo + "\n");
             writer.write("Fecha de Lanzamiento: " + fechaLanzamiento + "\n");
             writer.write("Número de Ventas: " + ventas + "\n");
@@ -103,27 +99,26 @@ public class Album implements Informacion{
 
             System.out.println("Información del álbum actualizada en 'album.txt'.");
         } catch (IOException e) {
-            System.err.println("Error al actualizar información: " + e.getMessage());
+            throw new InformacionException("Error al actualizar información: " + e.getMessage());
         }
     }
-   
-  
-  @Override
-  public String toString() {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-      StringBuilder sb = new StringBuilder();
-      sb.append("Álbum: ").append(titulo).append("\n");
-      sb.append("Fecha de Lanzamiento: ").append(dateFormat.format(fechaLanzamiento)).append("\n");
-      sb.append("Número de Ventas: ").append(ventas).append("\n");
-      sb.append("Canciones:\n");
-      for (Cancion cancion : canciones) {
-          sb.append("- ").append(cancion.getNombre()).append("\n");
-      }
-      sb.append("Críticas y Reseñas:\n");
-      for (CriticaResena critica : criticasResenas) {
-          sb.append("- ").append(critica.getComentario()).append("\n");
-      }
-      return sb.toString();
-  }
-  
+
+    @Override
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Álbum: ").append(titulo).append("\n");
+        sb.append("Fecha de Lanzamiento: ").append(dateFormat.format(fechaLanzamiento)).append("\n");
+        sb.append("Número de Ventas: ").append(ventas).append("\n");
+        sb.append("Canciones:\n");
+        for (Cancion cancion : canciones) {
+            sb.append("- ").append(cancion.getNombre()).append("\n");
+        }
+        sb.append("Críticas y Reseñas:\n");
+        for (CriticaResena critica : criticasResenas) {
+            sb.append("- ").append(critica.getComentario()).append("\n");
+        }
+        return sb.toString();
+    }
+
 }

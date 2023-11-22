@@ -2,6 +2,6 @@ package modelo;
 
 
 public interface Informacion {
-    void registrarInformacion();
-    void actualizarInformacion();
+    void registrarInformacion() throws InformacionException;
+    void actualizarInformacion() throws InformacionException;
 }
