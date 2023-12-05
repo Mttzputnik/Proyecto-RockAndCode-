@@ -49,6 +49,10 @@ public class Fanatico {
         return redesSociales;
     }
 
+    public List<Concierto> getConciertosAsistidos() {
+        return conciertosAsistidos;
+    }
+
     public void setRedesSociales(List<String> redesSociales) {
         this.redesSociales = redesSociales;
     }

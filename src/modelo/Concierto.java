@@ -49,6 +49,11 @@ public class Concierto {
         return capacidadLugar;
     }
 
+
+    public List<Cancion> getCancionesProgramadas() {
+        return cancionesProgramadas;
+    }   
+
     public void setCapacidadLugar(int capacidadLugar) {
         this.capacidadLugar = capacidadLugar;
     }

@@ -43,6 +43,10 @@ public class Banda implements Informacion {
         this.historia = historia;
     }
 
+    public List<MiembroBanda> getMiembros() {
+        return miembros;
+    }
+
     // Métodos para gestionar miembros
     public void agregarMiembro(String nombre, String instrumento, int experiencia) {
         MiembroBanda nuevoMiembro = new MiembroBanda(nombre, instrumento, experiencia);

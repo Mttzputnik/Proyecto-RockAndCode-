@@ -37,6 +37,10 @@ public class Album implements Informacion {
         return fechaLanzamiento;
     }
 
+    public List<Cancion> getCanciones() {
+        return canciones;
+    }
+
     public void setFechaLanzamiento(Date fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
@@ -56,6 +60,10 @@ public class Album implements Informacion {
     public void setSencillosDestacados(List<Cancion> sencillosDestacados) {
         this.sencillosDestacados = sencillosDestacados;
     }
+
+    public List<CriticaResena> getCriticasResenas() {
+        return criticasResenas;
+    }   
 
     // Métodos para la gestión de canciones y críticas
     public void agregarCancion(Cancion cancion) {

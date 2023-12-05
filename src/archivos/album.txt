@@ -1,3 +1,3 @@
-Título del Álbum: Album1
-Fecha de Lanzamiento: Wed Nov 22 15:04:20 COT 2023
+Título del Álbum: Álbum de Prueba
+Fecha de Lanzamiento: Tue Dec 05 18:07:47 COT 2023
 Número de Ventas: 0
